@@ -235,16 +235,20 @@ plottab11 = html.Div(children=[
     html.Div(children=[
         html.H1('Crimes Against Women In States Per Year',
                 style={'textAlign': 'center', 'color': '#c7c7c7', 'font-weight': '900', 'font-size': '18px', 'letter-spacing': '2px'}),
-        html.Div(className='row', children=[
-            html.Div(className='col', children=[html.Label('Select Year:', style={
-                'margin-left': 'auto', 'margin-right': 'auto', 'color': '#03a9f4', 'font-weight': '500'}), ]),
-            html.Div(className='col', children=[dcc.Dropdown(id='the_year-picker', options=year_options,
-                                                             value=df['Year'].min(), style={'margin-left': 'auto', 'margin-right': 'auto', 'width': '220px', 'background': '#131419', 'box-shadow': 'inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8)', 'border': '0', 'color': '#03a9f4', 'font-weight': '500', 'border-radius': '40px', 'margin-bottom': '15px'}),
-                                                ]), ]),
+#        html.Div(className='row', children=[
+#            html.Div(className='col', children=[html.Label('Select Year:', style={
+#                'margin-left': 'auto', 'margin-right': 'auto', 'color': '#03a9f4', 'font-weight': '500'}), ]),
+#            html.Div(className='col', children=[dcc.Dropdown(id='the_year-picker', options=year_options,
+#                                                             value=df['Year'].min(), style={'margin-left': 'auto', 'margin-right': 'auto', 'width': '220px', 'background': '#131419', 'box-shadow': 'inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8)', 'border': '0', 'color': '#03a9f4', 'font-weight': '500', 'border-radius': '40px', 'margin-bottom': '15px'}),
+#                                                ]), ]),
         html.Div(children=[
             dcc.Graph(id='the_box',
                       figure={
-                          'layout': {'paper_bgcolor': '#131419', 'plot_bgcolor': '#131419'}
+                          'data': [go.Box(
+                           x=df['State/UT'],
+                           y=df['Total Crimes Against Women'],
+                       )],
+                       'layout':go.Layout(margin=dict(l=30, r=10, t=10, b=120), xaxis={'title': 'States/UT'}, paper_bgcolor=colors['background'], plot_bgcolor=colors['background'], height=290, width=650)
                       }),
         ]),
     ]),
@@ -329,7 +333,7 @@ plottab2 = html.Div([
     html.Div(className="row", children=[
         dcc.Graph(id="stateCrime",
                   figure={
-                      'layout': {'paper_bgcolor': '#131419', 'plot_bgcolor': '#131419', 'height': 420, 'width': 600}
+                      'layout': {'paper_bgcolor': '#131419', 'plot_bgcolor': '#131419', 'height': 420, 'width': 580}
                   }),
 
     ]),
@@ -364,7 +368,7 @@ plottab12 = html.Div([
     html.Div(className="row", children=[
         dcc.Graph(id="the_stateCrime",
                   figure={
-                      'layout': {'paper_bgcolor': '#131419', 'plot_bgcolor': '#131419', 'height': 420, 'width': 600}
+                      'layout': {'paper_bgcolor': '#131419', 'plot_bgcolor': '#131419', 'height': 420, 'width': 580}
                   }),
 
     ]),
@@ -624,12 +628,12 @@ caw2 = dbc.Row(
         [
             plottab2,
         ],
-        body=True,  style={"box-shadow": "-5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.8)", "background-color": "#131419", 'margin-bottom': '20px', 'border-radius': '10px', 'width': '48%'}
+        body=True,  style={"box-shadow": "-5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.8)", "background-color": "#131419", 'margin-bottom': '20px', 'border-radius': '10px', 'width': '45%'}
     ), width="auto"), dbc.Col(dbc.Card(
         [
             plottab12,
         ],
-        body=True,  style={"box-shadow": "-5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.8)", "background-color": "#131419", 'margin-bottom': '20px', 'border-radius': '10px', 'width': '48%'}
+        body=True,  style={"box-shadow": "-5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.8)", "background-color": "#131419", 'margin-bottom': '20px', 'border-radius': '10px', 'width': '45%'}
     ), width="auto")]
 )
 
@@ -759,20 +763,20 @@ def update_figure(state_options):
     }
 
 
-@ app.callback(Output(component_id='the_box', component_property='figure'),
-               [Input(component_id='the_year-picker', component_property='value')])
-def update_figure(selected_year):
-    filtered_sf = df[df['Year'] == selected_year]
+#@ app.callback(Output(component_id='the_box', component_property='figure'),
+#               [Input(component_id='the_year-picker', component_property='value')])
+#def update_figure(selected_year):
+#    filtered_sf = df[df['Year'] == selected_year]
 
-    box = [go.Box(
-        x=df['State/UT'],
-        y=df['Total Crimes Against Women'],
-    )]
-    # return box
-    return {
-        'data': box,
-        'layout': go.Layout(margin=dict(l=30, r=10, t=0, b=100), xaxis={'title': 'States/UT'}, paper_bgcolor=colors['background'], plot_bgcolor=colors['background'], height=240, width=650)
-    }
+#    box = [go.Box(
+#        x=df['State/UT'],
+#        y=df['Total Crimes Against Women'],
+#    )]
+#    # return box
+#    return {
+#        'data': box,
+#        'layout': go.Layout(margin=dict(l=30, r=10, t=0, b=100), xaxis={'title': 'States/UT'}, paper_bgcolor=colors['background'], plot_bgcolor=colors['background'], height=240, width=650)
+#    }
 
 
 # @ app.callback(Output(component_id='the_scatter', component_property='figure'),

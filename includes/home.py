@@ -9,16 +9,16 @@ home = dbc.Container(
        html.Br(),
        dbc.Container(
            [
-           html.H1("Crime Analytical Dashboard", className="display-3"),
-           html.P(
-                "A dasboard for complete insights about Crimes in India. ",
-                 className="lead",
+           html.H1(style={'color': '#c7c7c7', 'font-weight': '900', 'font-size': '100px', 'letter-spacing': '2px'}, className="display-3", children=[
+            "Crimes Against Women Dashboard",
+        ]),
+           html.P(style={'color': '#03a9f4'}, className="lead", children=[
+                "A dasboard for Interactive and Exploratory visualizations about Crimes Against Women in India. ",]
            ),
            html.Hr(className="my-2"),
-           html.P(
-               "Provides Interactive and"
-               " Exploratory visualizations."
-           ),
+           html.P(style={'color': '#03a9f4'}, children=[
+               "Made By Ipsita Goel."
+           ]),
          
         ])
 ],style={'height':'100%'})
