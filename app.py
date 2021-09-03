@@ -628,12 +628,12 @@ caw2 = dbc.Row(
         [
             plottab2,
         ],
-        body=True,  style={"box-shadow": "-5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.8)", "background-color": "#131419", 'margin-bottom': '20px', 'border-radius': '10px', 'width': '45%'}
+        body=True,  style={"box-shadow": "-5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.8)", "background-color": "#131419", 'margin-bottom': '20px', 'border-radius': '10px', 'width': '50%'}
     ), width="auto"), dbc.Col(dbc.Card(
         [
             plottab12,
         ],
-        body=True,  style={"box-shadow": "-5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.8)", "background-color": "#131419", 'margin-bottom': '20px', 'border-radius': '10px', 'width': '45%'}
+        body=True,  style={"box-shadow": "-5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.8)", "background-color": "#131419", 'margin-bottom': '20px', 'border-radius': '10px', 'width': '50%'}
     ), width="auto")]
 )
 
